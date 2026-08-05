@@ -1,0 +1,98 @@
+import { useEffect, useState } from "react";
+
+import { useCarrito } from "../context/CarritoContext";
+
+function ModalProducto({ producto, visible, onCerrar }) {
+  const { agregarProducto } = useCarrito();
+
+  const [fragancia, setFragancia] = useState("");
+  const [cantidad, setCantidad] = useState(1);
+
+  useEffect(() => {
+    if (producto) {
+      setFragancia(producto.fragancias[0] || "");
+      setCantidad(1);
+    }
+  }, [producto]);
+
+  if (!visible || !producto) return null;
+
+  const subtotal = producto.precio * cantidad;
+
+  return (
+    <div className="modal d-block" style={{ background: "rgba(0,0,0,.5)" }}>
+      <div className="modal-dialog modal-dialog-centered">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5>{producto.nombre}</h5>
+
+            <button className="btn-close" onClick={onCerrar}></button>
+          </div>
+
+          <div className="modal-body">
+            <img
+              src={producto.imagen}
+              alt={producto.nombre}
+              className="img-fluid rounded mb-3"
+            />
+
+            <label className="form-label">Fragancia</label>
+
+            <select
+              className="form-select"
+              value={fragancia}
+              onChange={(e) => setFragancia(e.target.value)}
+            >
+              {producto.fragancias.map((item) => (
+                <option key={item}>{item}</option>
+              ))}
+            </select>
+
+            <label className="form-label mt-3">Cantidad</label>
+
+            <input
+              type="number"
+              min="1"
+              className="form-control"
+              value={cantidad}
+              onChange={(e) => setCantidad(Number(e.target.value))}
+            />
+
+            <h5 className="mt-4">
+              Precio: ${producto.precio.toLocaleString("es-AR")}
+            </h5>
+
+            <h4>Subtotal: ${subtotal.toLocaleString("es-AR")}</h4>
+          </div>
+
+          <div className="modal-footer">
+            <button className="btn btn-secondary" onClick={onCerrar}>
+              Cancelar
+            </button>
+
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                agregarProducto({
+                  ...producto,
+
+                  fragancia,
+
+                  cantidad,
+
+                  subtotal,
+                });
+
+                onCerrar();
+              }}
+            >
+              Agregar al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ModalProducto;
