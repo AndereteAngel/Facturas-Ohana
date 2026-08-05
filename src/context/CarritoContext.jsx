@@ -6,7 +6,75 @@ export function CarritoProvider({ children }) {
   const [carrito, setCarrito] = useState([]);
 
   function agregarProducto(producto) {
-    setCarrito([...carrito, producto]);
+    const existe = carrito.find(
+      (item) => item.id === producto.id && item.fragancia === producto.fragancia
+    );
+
+    if (existe) {
+      const nuevoCarrito = carrito.map((item) => {
+        if (item.id === producto.id && item.fragancia === producto.fragancia) {
+          const nuevaCantidad = item.cantidad + producto.cantidad;
+
+          return {
+            ...item,
+            cantidad: nuevaCantidad,
+            subtotal: item.precio * nuevaCantidad,
+          };
+        }
+
+        return item;
+      });
+
+      setCarrito(nuevoCarrito);
+    } else {
+      setCarrito([...carrito, producto]);
+    }
+  }
+
+  function aumentarCantidad(id, fragancia) {
+    setCarrito(
+      carrito.map((item) => {
+        if (item.id === id && item.fragancia === fragancia) {
+          const cantidadNueva = item.cantidad + 1;
+
+          return {
+            ...item,
+            cantidad: cantidadNueva,
+            subtotal: item.precio * cantidadNueva,
+          };
+        }
+
+        return item;
+      })
+    );
+  }
+
+  function disminuirCantidad(id, fragancia) {
+    setCarrito(
+      carrito
+        .map((item) => {
+          if (item.id === id && item.fragancia === fragancia) {
+            const cantidadNueva = item.cantidad - 1;
+
+            return {
+              ...item,
+              cantidad: cantidadNueva,
+              subtotal: item.precio * cantidadNueva,
+            };
+          }
+
+          return item;
+        })
+        .filter((item) => item.cantidad > 0)
+    );
+  }
+
+  function eliminarProducto(id, fragancia) {
+    setCarrito(
+      carrito.filter(
+        (item) => !(item.id === id && item.fragancia === fragancia)
+      )
+    );
   }
 
   function vaciarCarrito() {
@@ -21,6 +89,9 @@ export function CarritoProvider({ children }) {
         carrito,
         agregarProducto,
         vaciarCarrito,
+        aumentarCantidad,
+        disminuirCantidad,
+        eliminarProducto,
         total,
       }}
     >

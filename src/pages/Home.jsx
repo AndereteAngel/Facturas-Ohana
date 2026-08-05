@@ -9,7 +9,13 @@ function Home() {
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [mostrarModal, setMostrarModal] = useState(false);
 
-  const { carrito, total } = useCarrito();
+  const {
+    carrito,
+    total,
+    aumentarCantidad,
+    disminuirCantidad,
+    eliminarProducto,
+  } = useCarrito();
 
   const navigate = useNavigate();
 
@@ -22,7 +28,7 @@ function Home() {
     <div className="container-fluid py-4">
       <h1 className="text-center mb-4">Facturas Ohana</h1>
 
-      <div className="row">
+      <div className="row g-4">
         <div className="col-lg-8">
           <div className="d-flex flex-wrap gap-4 justify-content-center">
             {productos.map((producto) => (
@@ -36,7 +42,7 @@ function Home() {
         </div>
 
         <div className="col-lg-4">
-          <div className="card shadow p-3">
+          <div className="card shadow p-3 sticky-top" style={{ top: "20px" }}>
             <h3>🛒 Carrito</h3>
 
             <hr />
@@ -44,19 +50,48 @@ function Home() {
             {carrito.length === 0 && <p>No hay productos.</p>}
 
             {carrito.map((item, index) => (
-              <div key={index} className="mb-3">
-                <strong>{item.nombre}</strong>
-                <br />
-                Fragancia: {item.fragancia}
-                <br />
-                Cantidad: {item.cantidad}
-                <br />
-                Precio: ${item.precio.toLocaleString("es-AR")}
-                <br />
+              <div key={index} className="border rounded p-3 mb-3">
+                <h5>{item.nombre}</h5>
+
+                {item.fragancia && (
+                  <p className="mb-1">
+                    Fragancia: <strong>{item.fragancia}</strong>
+                  </p>
+                )}
+
+                <p className="mb-2">
+                  Precio unidad:{" "}
+                  <strong>${item.precio.toLocaleString("es-AR")}</strong>
+                </p>
+
+                <div className="d-flex align-items-center gap-2 mb-3">
+                  <button
+                    className="btn btn-outline-secondary btn-sm"
+                    onClick={() => disminuirCantidad(item.id, item.fragancia)}
+                  >
+                    -
+                  </button>
+
+                  <span className="fw-bold">{item.cantidad}</span>
+
+                  <button
+                    className="btn btn-outline-success btn-sm"
+                    onClick={() => aumentarCantidad(item.id, item.fragancia)}
+                  >
+                    +
+                  </button>
+
+                  <button
+                    className="btn btn-outline-danger btn-sm ms-auto"
+                    onClick={() => eliminarProducto(item.id, item.fragancia)}
+                  >
+                    🗑
+                  </button>
+                </div>
+
                 <strong>
                   Subtotal: ${item.subtotal.toLocaleString("es-AR")}
                 </strong>
-                <hr />
               </div>
             ))}
 
