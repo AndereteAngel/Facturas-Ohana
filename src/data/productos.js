@@ -1,10 +1,25 @@
+import {
+    coloresEquipos,
+    fraganciasAceites,
+    fraganciasAerosoles,
+    fraganciasAuto,
+    fraganciasCaritas,
+    fraganciasDifusores,
+    fraganciasMini,
+    fraganciasSahumerios,
+    fraganciasTarjetas,
+    fraganciasTextiles,
+    fraganciasTouch,
+} from "./fragancias";
+
+import Equipos from "../assets/Equipos.jpg";
 import aceite from "../assets/aceite.jpg";
 import aerosol from "../assets/aerosol.jpg";
 import auto from "../assets/auto.jpg";
 import caritas from "../assets/caritas.jpg";
 import difusor from "../assets/difusor.jpg";
-import fragancias from "./fragancias";
 import mini from "../assets/mini.jpg";
+import repuestoTouch from "../assets/repuestoTouch.jpg";
 import sahumerios from "../assets/sahumerios.jpg";
 import tarjetas from "../assets/tarjetas.jpg";
 import textil from "../assets/textiles.png";
@@ -16,12 +31,13 @@ const productos = [
         codigo: "TXT001",
         nombre: "Aromatizante Textil",
         categoria: "Textiles",
-        descripcion: "Perfuma telas, cortinas, sillones, ropa de cama y prendas.",
+        descripcion:
+            "Perfuma telas, cortinas, sillones, ropa de cama y prendas.",
         precio: 4500,
         stock: 10,
         imagen: textil,
         activo: true,
-        fragancias
+        fragancias: fraganciasTextiles,
     },
 
     {
@@ -34,7 +50,7 @@ const productos = [
         stock: 10,
         imagen: aerosol,
         activo: true,
-        fragancias
+        fragancias: fraganciasAerosoles,
     },
 
     {
@@ -43,11 +59,11 @@ const productos = [
         nombre: "Difusor",
         categoria: "Difusores",
         descripcion: "Difusor con varillas.",
-        precio: 6300,
+        precio: 6400,
         stock: 10,
         imagen: difusor,
         activo: true,
-        fragancias
+        fragancias: fraganciasDifusores,
     },
 
     {
@@ -58,13 +74,41 @@ const productos = [
         descripcion: "Repuesto para Touch.",
         precio: 3500,
         stock: 10,
-        imagen: touch,
+        imagen: repuestoTouch,
         activo: true,
-        fragancias
+        fragancias: fraganciasTouch,
     },
 
     {
         id: 5,
+        codigo: "EQREP001",
+        nombre: "Equipo Touch + Repuesto",
+        categoria: "Touch",
+        descripcion: "Equipo Touch con repuesto incluido.",
+        precio: 5500,
+        stock: 10,
+        imagen: touch,
+        activo: true,
+        fragancias: fraganciasTouch,
+    },
+
+    {
+        id: 6,
+        codigo: "EQU001",
+        nombre: "Equipo",
+        categoria: "Equipos",
+        descripcion:
+            "Equipo aromatizador disponible en distintos colores.",
+        precio: 16000,
+        stock: 10,
+        imagen: Equipos,
+        activo: true,
+        fragancias: [],
+        colores: coloresEquipos,
+    },
+
+    {
+        id: 7,
         codigo: "MIN001",
         nombre: "Mini",
         categoria: "Mini",
@@ -73,11 +117,11 @@ const productos = [
         stock: 10,
         imagen: mini,
         activo: true,
-        fragancias
+        fragancias: fraganciasMini,
     },
 
     {
-        id: 6,
+        id: 8,
         codigo: "TAR001",
         nombre: "Tarjeta Aromática",
         categoria: "Tarjetas",
@@ -86,11 +130,11 @@ const productos = [
         stock: 10,
         imagen: tarjetas,
         activo: true,
-        fragancias
+        fragancias: fraganciasTarjetas,
     },
 
     {
-        id: 7,
+        id: 9,
         codigo: "CAR001",
         nombre: "Caritas",
         categoria: "Caritas",
@@ -99,47 +143,50 @@ const productos = [
         stock: 10,
         imagen: caritas,
         activo: true,
-        fragancias
-    },
-
-    {
-        id: 8,
-        codigo: "AUT001",
-        nombre: "Aromatizador para Auto",
-        categoria: "Autos",
-        descripcion: "Aromatizante colgante para vehículos de larga duración.",
-        precio: 1900,
-        stock: 10,
-        imagen: auto,
-        activo: true,
-        fragancias: []
-    },
-
-    {
-        id: 9,
-        codigo: "ACE001",
-        nombre: "Aceite Esencial",
-        categoria: "Aceites",
-        descripcion: "Aceite esencial concentrado para hornillos y difusores.",
-        precio: 3800,
-        stock: 10,
-        imagen: aceite,
-        activo: true,
-        fragancias: []
+        fragancias: fraganciasCaritas,
     },
 
     {
         id: 10,
+        codigo: "AUT001",
+        nombre: "Aromatizador para Auto",
+        categoria: "Autos",
+        descripcion:
+            "Aromatizante colgante para vehículos de larga duración.",
+        precio: 2100,
+        stock: 10,
+        imagen: auto,
+        activo: true,
+        fragancias: fraganciasAuto,
+    },
+
+    {
+        id: 11,
+        codigo: "ACE001",
+        nombre: "Aceite Esencial",
+        categoria: "Aceites",
+        descripcion:
+            "Aceite esencial concentrado para hornillos y difusores.",
+        precio: 3800,
+        stock: 10,
+        imagen: aceite,
+        activo: true,
+        fragancias: fraganciasAceites,
+    },
+
+    {
+        id: 12,
         codigo: "SAH001",
         nombre: "Sahumerios Premium",
         categoria: "Sahumerios",
-        descripcion: "Sahumerios premium de larga duración con distintas fragancias.",
-        precio: 1700,
+        descripcion:
+            "Sahumerios premium de larga duración con distintas fragancias.",
+        precio: 1900,
         stock: 10,
         imagen: sahumerios,
         activo: true,
-        fragancias: []
-    }
+        fragancias: fraganciasSahumerios,
+    },
 ];
 
 export default productos;

@@ -1,23 +1,42 @@
 import { useEffect, useState } from "react";
 
+import BuscadorFragancia from "./BuscadorFragancia";
 import { useCarrito } from "../context/CarritoContext";
 
 function ModalProducto({ producto, visible, onCerrar }) {
   const { agregarProducto } = useCarrito();
 
   const [fragancia, setFragancia] = useState("");
+  const [color, setColor] = useState("");
   const [cantidad, setCantidad] = useState(1);
 
   useEffect(() => {
     if (producto) {
-      setFragancia(producto.fragancias[0] || "");
+      setFragancia(producto.fragancias?.[0] || "");
+      setColor(producto.colores?.[0] || "");
       setCantidad(1);
     }
   }, [producto]);
 
   if (!visible || !producto) return null;
 
+  const tieneFragancias = producto.fragancias && producto.fragancias.length > 0;
+
+  const tieneColores = producto.colores && producto.colores.length > 0;
+
   const subtotal = producto.precio * cantidad;
+
+  const manejarAgregar = () => {
+    agregarProducto({
+      ...producto,
+      fragancia: tieneFragancias ? fragancia : "",
+      color: tieneColores ? color : "",
+      cantidad,
+      subtotal,
+    });
+
+    onCerrar();
+  };
 
   return (
     <div className="modal d-block" style={{ background: "rgba(0,0,0,.5)" }}>
@@ -36,18 +55,39 @@ function ModalProducto({ producto, visible, onCerrar }) {
               className="img-fluid rounded mb-3"
             />
 
-            <label className="form-label">Fragancia</label>
+            {/* FRAGANCIAS */}
+            {tieneFragancias && (
+              <>
+                <label className="form-label">Fragancia</label>
 
-            <select
-              className="form-select"
-              value={fragancia}
-              onChange={(e) => setFragancia(e.target.value)}
-            >
-              {producto.fragancias.map((item) => (
-                <option key={item}>{item}</option>
-              ))}
-            </select>
+                <BuscadorFragancia
+                  fragancias={producto.fragancias}
+                  valor={fragancia}
+                  onSeleccionar={setFragancia}
+                />
+              </>
+            )}
 
+            {/* COLORES */}
+            {tieneColores && (
+              <>
+                <label className="form-label mt-3">Color</label>
+
+                <select
+                  className="form-select"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                >
+                  {producto.colores.map((item) => (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </>
+            )}
+
+            {/* CANTIDAD */}
             <label className="form-label mt-3">Cantidad</label>
 
             <input
@@ -55,9 +95,14 @@ function ModalProducto({ producto, visible, onCerrar }) {
               min="1"
               className="form-control"
               value={cantidad}
-              onChange={(e) => setCantidad(Number(e.target.value))}
+              onChange={(e) => {
+                const nuevaCantidad = Number(e.target.value);
+
+                setCantidad(nuevaCantidad < 1 ? 1 : nuevaCantidad);
+              }}
             />
 
+            {/* PRECIOS */}
             <h5 className="mt-4">
               Precio: ${producto.precio.toLocaleString("es-AR")}
             </h5>
@@ -70,22 +115,7 @@ function ModalProducto({ producto, visible, onCerrar }) {
               Cancelar
             </button>
 
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                agregarProducto({
-                  ...producto,
-
-                  fragancia,
-
-                  cantidad,
-
-                  subtotal,
-                });
-
-                onCerrar();
-              }}
-            >
+            <button className="btn btn-primary" onClick={manejarAgregar}>
               Agregar al carrito
             </button>
           </div>
