@@ -1,57 +1,223 @@
-.card-producto{
-    width:280px;
-    background:white;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
-    transition:.3s;
+/* =========================================
+   OHANA — CARD PRODUCTO
+   ========================================= */
+
+.card-producto {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background: var(--ohana-surface);
+
+  border: 1px solid var(--ohana-border);
+  border-radius: var(--ohana-radius);
+
+  overflow: hidden;
+
+  box-shadow: var(--ohana-shadow-sm);
+
+  text-align: center;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.card-producto:hover{
-    transform:translateY(-8px);
+
+/* =========================================
+   HOVER
+   ========================================= */
+
+.card-producto:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ohana-shadow);
 }
 
-.producto-imagen{
-    width:100%;
-    height:230px;
-    object-fit:cover;
+
+/* =========================================
+   IMAGEN
+   ========================================= */
+
+.producto-imagen {
+  width: 100%;
+  height: 220px;
+
+  display: block;
+
+  object-fit: contain;
+
+  padding: 14px;
+
+  box-sizing: border-box;
+
+  background: var(--ohana-background);
 }
 
-.producto-info{
-    padding:18px;
+
+/* =========================================
+   INFORMACIÓN
+   ========================================= */
+
+.producto-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  flex: 1;
+
+  padding: var(--ohana-space-6) var(--ohana-space-5);
 }
 
-.producto-info h3{
-    margin-bottom:10px;
-    font-size:22px;
+
+/* =========================================
+   NOMBRE
+   ========================================= */
+
+.producto-info h3 {
+  margin: 0 0 var(--ohana-space-2);
+
+  color: var(--ohana-text);
+
+  font-family: var(--ohana-font-title);
+
+  font-size: var(--ohana-h3-size);
+
+  font-weight: var(--ohana-title-weight);
+
+  line-height: 1.25;
+
+  letter-spacing: 0.2px;
 }
 
-.producto-info p{
-    margin:6px 0;
+
+/* =========================================
+   DESCRIPCIÓN
+   ========================================= */
+
+.producto-info p:not(.precio):not(.stock) {
+  max-width: 300px;
+
+  margin: 0;
+
+  color: var(--ohana-text-muted);
+
+  font-family: var(--ohana-font);
+
+  font-size: var(--ohana-text-size);
+
+  font-weight: var(--ohana-text-weight);
+
+  line-height: 1.5;
 }
 
-.precio{
-    color:#0d6efd;
-    font-size:26px;
-    font-weight:bold;
+
+/* =========================================
+   PRECIO
+   ========================================= */
+
+.producto-info .precio {
+  margin: var(--ohana-space-4) 0 var(--ohana-space-1);
+
+  color: var(--ohana-primary);
+
+  font-family: var(--ohana-font);
+
+  font-size: var(--ohana-price-size);
+
+  font-weight: var(--ohana-price-weight);
+
+  line-height: 1.2;
 }
 
-.stock{
-    color:#666;
+
+/* =========================================
+   STOCK
+   ========================================= */
+
+.producto-info .stock {
+  margin: 0;
+
+  color: var(--ohana-text-muted);
+
+  font-family: var(--ohana-font);
+
+  font-size: var(--ohana-small-size);
+
+  font-weight: var(--ohana-text-weight);
 }
 
-.producto-info button{
-    width:100%;
-    margin-top:15px;
-    border:none;
-    padding:12px;
-    border-radius:10px;
-    background:#0d6efd;
-    color:white;
-    font-size:17px;
-    cursor:pointer;
+
+/* =========================================
+   BOTÓN OHANA
+   ========================================= */
+
+.producto-info button {
+  width: 90%;
+
+  margin-top: var(--ohana-space-6);
+
+  padding: 11px 18px;
+
+  border: 1px solid var(--ohana-primary);
+
+  border-radius: var(--ohana-radius-pill);
+
+  background: var(--ohana-primary);
+
+  color: var(--ohana-on-primary);
+
+  font-family: var(--ohana-font);
+
+  font-size: var(--ohana-text-size);
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.producto-info button:hover{
-    background:#0b5ed7;
+
+/* =========================================
+   HOVER BOTÓN
+   ========================================= */
+
+.producto-info button:hover {
+  background: var(--ohana-primary-dark);
+
+  transform: translateY(-2px);
+
+  box-shadow: var(--ohana-shadow-sm);
+}
+
+
+/* =========================================
+   ACTIVE
+   ========================================= */
+
+.producto-info button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .producto-imagen {
+    height: 210px;
+  }
+
+  .producto-info {
+    padding: var(--ohana-space-5);
+  }
+
+  .producto-info button {
+    width: 95%;
+  }
 }

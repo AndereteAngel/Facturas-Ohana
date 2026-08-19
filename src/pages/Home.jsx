@@ -1,3 +1,5 @@
+import "../styles/home.css";
+
 import CardProducto from "../components/CardProducto";
 import ModalProducto from "../components/ModalProducto";
 import productos from "../data/productos";
@@ -25,87 +27,140 @@ function Home() {
   }
 
   return (
-    <div className="container-fluid py-4">
-      <h1 className="text-center mb-4">Facturas Ohana</h1>
+    <main className="ohana-home">
+      <div className="ohana-layout">
+        {/* =========================
+            PRODUCTOS
+            ========================= */}
 
-      <div className="row g-4">
-        <div className="col-lg-8">
-          <div className="d-flex flex-wrap gap-4 justify-content-center">
-            {productos.map((producto) => (
-              <CardProducto
-                key={producto.id}
-                producto={producto}
-                onAgregar={abrirModal}
-              />
-            ))}
+        <section className="ohana-productos">
+          {productos.map((producto) => (
+            <CardProducto
+              key={producto.id}
+              producto={producto}
+              onAgregar={abrirModal}
+            />
+          ))}
+        </section>
+
+        {/* =========================
+            CARRITO
+            ========================= */}
+
+        <aside className="ohana-carrito">
+          <div className="ohana-carrito-header">
+            <div className="ohana-carrito-icon">🛍️</div>
+
+            <div>
+              <h2>Tu carrito</h2>
+
+              <p>
+                {carrito.length === 0
+                  ? "Todavía no agregaste productos"
+                  : `${carrito.length} producto${
+                      carrito.length !== 1 ? "s" : ""
+                    }`}
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className="col-lg-4">
-          <div className="card shadow p-3 sticky-top" style={{ top: "20px" }}>
-            <h3>🛒 Carrito</h3>
+          <div className="ohana-carrito-linea" />
 
-            <hr />
+          {/* CARRITO VACÍO */}
 
-            {carrito.length === 0 && <p>No hay productos.</p>}
+          {carrito.length === 0 && (
+            <div className="ohana-carrito-vacio">
+              <span>🌸</span>
 
-            {carrito.map((item, index) => (
-              <div key={index} className="border rounded p-3 mb-3">
-                <h5>{item.nombre}</h5>
+              <h3>Tu carrito está vacío</h3>
 
-                {item.fragancia && (
-                  <p className="mb-1">
-                    Fragancia: <strong>{item.fragancia}</strong>
-                  </p>
-                )}
+              <p>Elegí tus productos favoritos</p>
+            </div>
+          )}
 
-                <p className="mb-2">
-                  Precio unidad:{" "}
-                  <strong>${item.precio.toLocaleString("es-AR")}</strong>
-                </p>
+          {/* PRODUCTOS DEL CARRITO */}
 
-                <div className="d-flex align-items-center gap-2 mb-3">
-                  <button
-                    className="btn btn-outline-secondary btn-sm"
-                    onClick={() => disminuirCantidad(item.id, item.fragancia)}
-                  >
-                    -
-                  </button>
+          {carrito.length > 0 && (
+            <div className="ohana-carrito-items">
+              {carrito.map((item, index) => (
+                <div key={index} className="ohana-carrito-item">
+                  <div className="ohana-item-info">
+                    <h3>{item.nombre}</h3>
 
-                  <span className="fw-bold">{item.cantidad}</span>
+                    {item.fragancia && (
+                      <p className="ohana-item-fragancia">{item.fragancia}</p>
+                    )}
 
-                  <button
-                    className="btn btn-outline-success btn-sm"
-                    onClick={() => aumentarCantidad(item.id, item.fragancia)}
-                  >
-                    +
-                  </button>
+                    <p className="ohana-item-precio">
+                      ${item.precio.toLocaleString("es-AR")}
+                      <span> / unidad</span>
+                    </p>
+                  </div>
 
-                  <button
-                    className="btn btn-outline-danger btn-sm ms-auto"
-                    onClick={() => eliminarProducto(item.id, item.fragancia)}
-                  >
-                    🗑
-                  </button>
+                  <div className="ohana-item-controles">
+                    <div className="ohana-cantidad">
+                      <button
+                        type="button"
+                        className="ohana-cantidad-btn"
+                        onClick={() =>
+                          disminuirCantidad(item.id, item.fragancia)
+                        }
+                      >
+                        −
+                      </button>
+
+                      <span>{item.cantidad}</span>
+
+                      <button
+                        type="button"
+                        className="ohana-cantidad-btn"
+                        onClick={() =>
+                          aumentarCantidad(item.id, item.fragancia)
+                        }
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="ohana-eliminar"
+                      onClick={() => eliminarProducto(item.id, item.fragancia)}
+                      title="Eliminar producto"
+                    >
+                      🗑
+                    </button>
+                  </div>
+
+                  <div className="ohana-item-subtotal">
+                    <span>Subtotal</span>
+
+                    <strong>${item.subtotal.toLocaleString("es-AR")}</strong>
+                  </div>
                 </div>
+              ))}
+            </div>
+          )}
 
-                <strong>
-                  Subtotal: ${item.subtotal.toLocaleString("es-AR")}
-                </strong>
-              </div>
-            ))}
+          {/* TOTAL */}
 
-            <h3>Total: ${total.toLocaleString("es-AR")}</h3>
+          <div className="ohana-carrito-total">
+            <span>Total</span>
 
-            <button
-              className="btn btn-success w-100 mt-3"
-              disabled={carrito.length === 0}
-              onClick={() => navigate("/nueva-factura")}
-            >
-              Finalizar Venta
-            </button>
+            <strong>${total.toLocaleString("es-AR")}</strong>
           </div>
-        </div>
+
+          {/* FINALIZAR */}
+
+          <button
+            type="button"
+            className="ohana-btn-finalizar"
+            disabled={carrito.length === 0}
+            onClick={() => navigate("/nueva-factura")}
+          >
+            Finalizar venta
+          </button>
+        </aside>
       </div>
 
       <ModalProducto
@@ -113,7 +168,7 @@ function Home() {
         producto={productoSeleccionado}
         onCerrar={() => setMostrarModal(false)}
       />
-    </div>
+    </main>
   );
 }
 

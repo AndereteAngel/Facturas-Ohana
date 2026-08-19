@@ -1,0 +1,146 @@
+:root {
+
+  /* =========================================
+     OHANA — COLORES
+     ========================================= */
+
+  --ohana-primary: #d96b91;
+  --ohana-primary-dark: #b94f75;
+  --ohana-primary-light: #f6d7e1;
+
+  --ohana-background: #fff9fb;
+  --ohana-surface: #ffffff;
+
+  --ohana-text: #3d3035;
+  --ohana-text-muted: #806f76;
+
+  --ohana-border: #eadde2;
+
+  --ohana-success: #6fa47c;
+  --ohana-danger: #c85c6b;
+
+  --ohana-on-primary: #ffffff;
+
+
+  /* =========================================
+     OHANA — TIPOGRAFÍA
+     ========================================= */
+
+  --ohana-font-title:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  --ohana-font:
+    "Trebuchet MS",
+    "Segoe UI",
+    sans-serif;
+
+
+  /* =========================================
+     OHANA — TAMAÑOS
+     ========================================= */
+
+  --ohana-h1-size: 42px;
+  --ohana-h2-size: 26px;
+  --ohana-h3-size: 18px;
+
+  --ohana-text-size: 14px;
+  --ohana-small-size: 12px;
+
+  --ohana-price-size: 24px;
+
+
+  /* =========================================
+     OHANA — PESOS
+     ========================================= */
+
+  --ohana-title-weight: 600;
+  --ohana-text-weight: 400;
+  --ohana-price-weight: 700;
+
+
+  /* =========================================
+     OHANA — FORMAS
+     ========================================= */
+
+  --ohana-radius-sm: 8px;
+  --ohana-radius: 14px;
+  --ohana-radius-lg: 20px;
+  --ohana-radius-pill: 999px;
+
+
+  /* =========================================
+     OHANA — SOMBRAS
+     ========================================= */
+
+  --ohana-shadow-sm:
+    0 3px 10px rgba(80, 40, 55, 0.06);
+
+  --ohana-shadow:
+    0 6px 20px rgba(80, 40, 55, 0.10);
+
+
+  /* =========================================
+     OHANA — ESPACIADO
+     ========================================= */
+
+  --ohana-space-1: 4px;
+  --ohana-space-2: 8px;
+  --ohana-space-3: 12px;
+  --ohana-space-4: 16px;
+  --ohana-space-5: 20px;
+  --ohana-space-6: 24px;
+  --ohana-space-8: 32px;
+
+
+  /* =========================================
+     OHANA — COMPONENTES
+     ========================================= */
+
+  /* Contenedores tipo card */
+
+  --ohana-card-background: var(--ohana-surface);
+
+  --ohana-card-border:
+    1px solid var(--ohana-border);
+
+  --ohana-card-radius:
+    var(--ohana-radius);
+
+  --ohana-card-shadow:
+    var(--ohana-shadow-sm);
+
+
+  /* Botón principal */
+
+  --ohana-button-background:
+    var(--ohana-primary);
+
+  --ohana-button-hover:
+    var(--ohana-primary-dark);
+
+  --ohana-button-text:
+    var(--ohana-on-primary);
+
+  --ohana-button-radius:
+    var(--ohana-radius-pill);
+
+
+  /* Botones pequeños */
+
+  --ohana-control-background:
+    var(--ohana-primary-light);
+
+  --ohana-control-text:
+    var(--ohana-primary-dark);
+
+  --ohana-control-radius:
+    var(--ohana-radius-sm);
+
+
+  /* Separadores */
+
+  --ohana-divider:
+    var(--ohana-border);
+}

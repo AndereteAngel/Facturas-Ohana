@@ -1,0 +1,123 @@
+/* =========================
+   OHANA — NAVBAR
+   ========================= */
+
+.ohana-navbar {
+  width: 100%;
+
+  background: var(--ohana-surface);
+
+  border-bottom: 1px solid var(--ohana-border);
+
+  box-shadow: var(--ohana-shadow-sm);
+}
+
+
+/* =========================
+   CONTENEDOR
+   ========================= */
+
+.ohana-navbar-container {
+  width: 100%;
+  max-width: 1200px;
+
+  min-height: 68px;
+
+  margin: 0 auto;
+
+  padding: 0 var(--ohana-space-6);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+/* =========================
+   MARCA
+   ========================= */
+
+.ohana-navbar-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: var(--ohana-text);
+
+  text-decoration: none;
+
+  font-family: var(--ohana-font-display);
+
+  font-size: 25px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  transition: color 0.2s ease;
+}
+
+.ohana-navbar-brand:hover {
+  color: var(--ohana-primary);
+}
+
+
+/* =========================
+   ICONO
+   ========================= */
+
+.ohana-navbar-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background: var(--ohana-primary-light);
+
+  font-size: 18px;
+}
+
+
+/* =========================
+   FRASE
+   ========================= */
+
+.ohana-navbar-tagline {
+  color: var(--ohana-text-muted);
+
+  font-family: var(--ohana-font);
+
+  font-size: 14px;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+  .ohana-navbar-container {
+    min-height: 62px;
+
+    padding: 0 var(--ohana-space-4);
+  }
+
+  .ohana-navbar-brand {
+    font-size: 22px;
+  }
+
+  .ohana-navbar-tagline {
+    display: none;
+  }
+}

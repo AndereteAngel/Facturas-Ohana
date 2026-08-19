@@ -1,15 +1,20 @@
+import "./Navbar.css";
+
 import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-dark bg-success shadow">
-      <div className="container">
-        <Link
-          className="navbar-brand fw-bold"
-          to="/"
-        >
-          🌿 Facturas Ohana
+    <nav className="ohana-navbar">
+      <div className="ohana-navbar-container">
+        <Link className="ohana-navbar-brand" to="/">
+          <span className="ohana-navbar-icon">🌸</span>
+
+          <span>OHANA</span>
         </Link>
+
+        <span className="ohana-navbar-tagline">
+          Aromas que transforman espacios
+        </span>
       </div>
     </nav>
   );

@@ -1,0 +1,531 @@
+/* =====================================================
+   OHANA — HOME
+   ===================================================== */
+
+.ohana-home {
+  width: 100%;
+  padding: var(--ohana-space-8);
+  box-sizing: border-box;
+  background: var(--ohana-background);
+}
+
+
+/* =====================================================
+   LAYOUT PRINCIPAL
+   ===================================================== */
+
+.ohana-layout {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+
+  gap: var(--ohana-space-8);
+  align-items: start;
+}
+
+
+/* =====================================================
+   PRODUCTOS
+   ===================================================== */
+
+.ohana-productos {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: var(--ohana-space-6);
+
+  align-items: stretch;
+}
+
+
+/* =====================================================
+   CARRITO
+   ===================================================== */
+
+.ohana-carrito {
+  width: 100%;
+  box-sizing: border-box;
+
+  background: var(--ohana-surface);
+
+  border: 1px solid var(--ohana-border);
+
+  border-radius: var(--ohana-radius-lg);
+
+  box-shadow: var(--ohana-shadow);
+
+  padding: var(--ohana-space-6);
+
+  position: sticky;
+  top: 20px;
+}
+
+
+/* =====================================================
+   CABECERA DEL CARRITO
+   ===================================================== */
+
+.ohana-carrito-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: var(--ohana-space-4);
+
+  text-align: left;
+}
+
+
+.ohana-carrito-icon {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--ohana-primary-light);
+
+  border-radius: 50%;
+
+  font-size: 23px;
+}
+
+
+.ohana-carrito-header h2 {
+  margin: 0;
+
+  color: var(--ohana-text);
+
+  font-family: var(--ohana-font-title);
+
+  font-size: var(--ohana-h2-size);
+
+  font-weight: var(--ohana-title-weight);
+}
+
+
+.ohana-carrito-header p {
+  margin: 3px 0 0;
+
+  color: var(--ohana-text-muted);
+
+  font-family: var(--ohana-font);
+
+  font-size: var(--ohana-small-size);
+}
+
+
+/* =====================================================
+   SEPARADOR
+   ===================================================== */
+
+.ohana-carrito-linea {
+  height: 1px;
+
+  background: var(--ohana-border);
+
+  margin: var(--ohana-space-5) 0;
+}
+
+
+/* =====================================================
+   CARRITO VACÍO
+   ===================================================== */
+
+.ohana-carrito-vacio {
+  padding: 30px 10px;
+
+  text-align: center;
+}
+
+
+.ohana-carrito-vacio span {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 32px;
+}
+
+
+.ohana-carrito-vacio h3 {
+  margin: 0 0 6px;
+
+  color: var(--ohana-text);
+
+  font-family: var(--ohana-font-title);
+
+  font-size: 20px;
+}
+
+
+.ohana-carrito-vacio p {
+  margin: 0;
+
+  color: var(--ohana-text-muted);
+
+  font-family: var(--ohana-font);
+
+  font-size: var(--ohana-small-size);
+}
+
+
+/* =====================================================
+   ITEMS DEL CARRITO
+   ===================================================== */
+
+.ohana-carrito-items {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--ohana-space-4);
+}
+
+
+.ohana-carrito-item {
+  padding: var(--ohana-space-4);
+
+  background: var(--ohana-background);
+
+  border: 1px solid var(--ohana-border);
+
+  border-radius: var(--ohana-radius);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: var(--ohana-space-3);
+}
+
+
+/* =====================================================
+   INFORMACIÓN DEL PRODUCTO
+   ===================================================== */
+
+.ohana-item-info h3 {
+  margin: 0 0 4px;
+
+  color: var(--ohana-text);
+
+  font-family: var(--ohana-font);
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+
+.ohana-item-fragancia {
+  margin: 0 0 5px;
+
+  color: var(--ohana-primary);
+
+  font-family: var(--ohana-font);
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+.ohana-item-precio {
+  margin: 0;
+
+  color: var(--ohana-text);
+
+  font-family: var(--ohana-font);
+
+  font-size: 13px;
+}
+
+
+.ohana-item-precio span {
+  color: var(--ohana-text-muted);
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   CONTROLES DE CANTIDAD
+   ===================================================== */
+
+.ohana-item-controles {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+.ohana-cantidad {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid var(--ohana-border);
+
+  border-radius: var(--ohana-radius-pill);
+
+  background: var(--ohana-surface);
+
+  overflow: hidden;
+}
+
+
+.ohana-cantidad-btn {
+  width: 32px;
+  height: 30px;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--ohana-primary);
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition: background 0.2s ease;
+}
+
+
+.ohana-cantidad-btn:hover {
+  background: var(--ohana-primary-light);
+}
+
+
+.ohana-cantidad span {
+  min-width: 30px;
+
+  text-align: center;
+
+  color: var(--ohana-text);
+
+  font-family: var(--ohana-font);
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   ELIMINAR
+   ===================================================== */
+
+.ohana-eliminar {
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid var(--ohana-border);
+
+  border-radius: 50%;
+
+  background: var(--ohana-surface);
+
+  color: var(--ohana-danger);
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition: all 0.2s ease;
+}
+
+
+.ohana-eliminar:hover {
+  background: #fbe8eb;
+
+  border-color: var(--ohana-danger);
+}
+
+
+/* =====================================================
+   SUBTOTAL
+   ===================================================== */
+
+.ohana-item-subtotal {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-top: 8px;
+
+  border-top: 1px solid var(--ohana-border);
+}
+
+
+.ohana-item-subtotal span {
+  color: var(--ohana-text-muted);
+
+  font-family: var(--ohana-font);
+
+  font-size: 12px;
+}
+
+
+.ohana-item-subtotal strong {
+  color: var(--ohana-primary);
+
+  font-family: var(--ohana-font);
+
+  font-size: 16px;
+
+  font-weight: var(--ohana-price-weight);
+}
+
+
+/* =====================================================
+   TOTAL
+   ===================================================== */
+
+.ohana-carrito-total {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: var(--ohana-space-5);
+
+  padding-top: var(--ohana-space-5);
+
+  border-top: 2px solid var(--ohana-border);
+}
+
+
+.ohana-carrito-total span {
+  color: var(--ohana-text);
+
+  font-family: var(--ohana-font);
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+
+.ohana-carrito-total strong {
+  color: var(--ohana-primary);
+
+  font-family: var(--ohana-font);
+
+  font-size: var(--ohana-price-size);
+
+  font-weight: var(--ohana-price-weight);
+}
+
+
+/* =====================================================
+   FINALIZAR VENTA
+   ===================================================== */
+
+.ohana-btn-finalizar {
+  width: 100%;
+
+  margin-top: var(--ohana-space-5);
+
+  padding: 13px 20px;
+
+  border: none;
+
+  border-radius: var(--ohana-radius-pill);
+
+  background: var(--ohana-primary);
+
+  color: #ffffff;
+
+  font-family: var(--ohana-font);
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.3px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+.ohana-btn-finalizar:hover:not(:disabled) {
+  background: var(--ohana-primary-dark);
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--ohana-shadow-sm);
+}
+
+
+.ohana-btn-finalizar:disabled {
+  background: var(--ohana-primary-light);
+
+  color: var(--ohana-text-muted);
+
+  cursor: not-allowed;
+
+  opacity: 0.8;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 1000px) {
+
+  .ohana-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ohana-carrito {
+    position: static;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .ohana-home {
+    padding: var(--ohana-space-4);
+  }
+
+  .ohana-productos {
+    grid-template-columns: 1fr;
+  }
+
+  .ohana-carrito {
+    padding: var(--ohana-space-5);
+  }
+
+}
