@@ -1,0 +1,463 @@
+/* =========================================================
+   OHANA — NUEVA FACTURA
+   Utiliza el Design System OHANA
+   ========================================================= */
+
+.ohana-nueva-factura {
+  min-height: 100vh;
+  padding: var(--ohana-space-8);
+  background: var(--ohana-background);
+  font-family: var(--ohana-font);
+  color: var(--ohana-text);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* =========================================================
+   CARD PRINCIPAL
+   ========================================================= */
+
+.ohana-factura-card {
+  width: 100%;
+  max-width: 1000px;
+
+  background: var(--ohana-card-background);
+  border: var(--ohana-card-border);
+  border-radius: var(--ohana-radius-lg);
+  box-shadow: var(--ohana-card-shadow);
+
+  padding: var(--ohana-space-8);
+}
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+.ohana-factura-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: var(--ohana-space-6);
+}
+
+.ohana-factura-header h1 {
+  margin: 0;
+
+  font-family: var(--ohana-font-title);
+  font-size: var(--ohana-h1-size);
+  font-weight: var(--ohana-title-weight);
+
+  color: var(--ohana-primary);
+  letter-spacing: 2px;
+}
+
+.ohana-factura-header p {
+  margin: var(--ohana-space-2) 0 0;
+
+  font-size: var(--ohana-text-size);
+  color: var(--ohana-text-muted);
+}
+
+.ohana-factura-fecha {
+  padding: var(--ohana-space-2) var(--ohana-space-3);
+
+  background: var(--ohana-primary-light);
+  border-radius: var(--ohana-radius-pill);
+
+  font-size: var(--ohana-small-size);
+  font-weight: var(--ohana-title-weight);
+
+  color: var(--ohana-primary-dark);
+}
+
+/* =========================================================
+   DIVISOR
+   ========================================================= */
+
+.ohana-divider {
+  height: 1px;
+
+  margin: var(--ohana-space-6) 0;
+
+  background: var(--ohana-divider);
+}
+
+/* =========================================================
+   TÍTULO DEL PEDIDO
+   ========================================================= */
+
+.ohana-factura-productos-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: var(--ohana-space-4);
+}
+
+.ohana-factura-productos-titulo h2 {
+  margin: 0;
+
+  font-family: var(--ohana-font-title);
+  font-size: var(--ohana-h2-size);
+  font-weight: var(--ohana-title-weight);
+
+  color: var(--ohana-text);
+}
+
+.ohana-factura-productos-titulo span {
+  padding: var(--ohana-space-1) var(--ohana-space-3);
+
+  background: var(--ohana-primary-light);
+  border-radius: var(--ohana-radius-pill);
+
+  font-size: var(--ohana-small-size);
+  color: var(--ohana-primary-dark);
+}
+
+/* =========================================================
+   TABLA
+   ========================================================= */
+
+.ohana-factura-tabla {
+  width: 100%;
+  overflow: hidden;
+
+  border: 1px solid var(--ohana-border);
+  border-radius: var(--ohana-radius);
+}
+
+/* Encabezado */
+
+.ohana-factura-tabla-header {
+  display: grid;
+
+  grid-template-columns: 2fr 1.6fr 1fr 0.8fr 1fr;
+
+  gap: var(--ohana-space-3);
+
+  padding: var(--ohana-space-4);
+
+  background: var(--ohana-primary-light);
+
+  border-bottom: 1px solid var(--ohana-border);
+}
+
+.ohana-factura-tabla-header span {
+  font-size: var(--ohana-small-size);
+  font-weight: var(--ohana-title-weight);
+
+  color: var(--ohana-primary-dark);
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Filas */
+
+.ohana-factura-fila {
+  display: grid;
+
+  grid-template-columns: 2fr 1.6fr 1fr 0.8fr 1fr;
+
+  gap: var(--ohana-space-3);
+
+  align-items: center;
+
+  padding: var(--ohana-space-4);
+
+  background: var(--ohana-surface);
+
+  border-bottom: 1px solid var(--ohana-border);
+
+  font-size: var(--ohana-text-size);
+}
+
+.ohana-factura-fila:last-child {
+  border-bottom: none;
+}
+
+.ohana-factura-producto {
+  font-weight: var(--ohana-title-weight);
+  color: var(--ohana-text);
+}
+
+.ohana-factura-fragancia {
+  color: var(--ohana-text-muted);
+}
+
+.ohana-factura-cantidad {
+  text-align: center;
+
+  font-weight: var(--ohana-title-weight);
+
+  color: var(--ohana-text);
+}
+
+.ohana-factura-subtotal {
+  text-align: right;
+
+  font-weight: var(--ohana-price-weight);
+
+  color: var(--ohana-primary-dark);
+}
+
+/* =========================================================
+   TOTAL
+   ========================================================= */
+
+.ohana-factura-total {
+  margin-top: var(--ohana-space-5);
+
+  padding: var(--ohana-space-5);
+
+  background: var(--ohana-primary-light);
+
+  border-radius: var(--ohana-radius);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: var(--ohana-space-4);
+}
+
+.ohana-factura-total span {
+  font-size: var(--ohana-text-size);
+  font-weight: var(--ohana-title-weight);
+
+  color: var(--ohana-primary-dark);
+}
+
+.ohana-factura-total strong {
+  font-size: var(--ohana-price-size);
+  font-weight: var(--ohana-price-weight);
+
+  color: var(--ohana-primary-dark);
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.ohana-factura-acciones {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: var(--ohana-space-3);
+
+  margin-top: var(--ohana-space-6);
+}
+
+.ohana-btn-primary,
+.ohana-btn-secondary {
+  border: none;
+
+  padding: var(--ohana-space-3) var(--ohana-space-5);
+
+  border-radius: var(--ohana-button-radius);
+
+  font-family: var(--ohana-font);
+  font-size: var(--ohana-text-size);
+  font-weight: var(--ohana-title-weight);
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Botón principal */
+
+.ohana-btn-primary {
+  background: var(--ohana-button-background);
+  color: var(--ohana-button-text);
+
+  box-shadow: var(--ohana-shadow-sm);
+}
+
+.ohana-btn-primary:hover {
+  background: var(--ohana-button-hover);
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--ohana-shadow);
+}
+
+/* Botón secundario */
+
+.ohana-btn-secondary {
+  background: var(--ohana-control-background);
+  color: var(--ohana-control-text);
+
+  border-radius: var(--ohana-control-radius);
+}
+
+.ohana-btn-secondary:hover {
+  background: var(--ohana-primary-light);
+}
+
+/* =========================================================
+   FACTURA VACÍA
+   ========================================================= */
+
+.ohana-factura-vacia {
+  padding: var(--ohana-space-8);
+
+  text-align: center;
+}
+
+.ohana-factura-vacia > span {
+  display: block;
+
+  margin-bottom: var(--ohana-space-4);
+
+  font-size: 42px;
+}
+
+.ohana-factura-vacia h2 {
+  margin: 0 0 var(--ohana-space-2);
+
+  font-family: var(--ohana-font-title);
+  font-size: var(--ohana-h2-size);
+
+  color: var(--ohana-text);
+}
+
+.ohana-factura-vacia p {
+  max-width: 500px;
+
+  margin: 0 auto var(--ohana-space-6);
+
+  font-size: var(--ohana-text-size);
+  line-height: 1.6;
+
+  color: var(--ohana-text-muted);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.ohana-factura-footer {
+  margin-top: var(--ohana-space-8);
+  padding-top: var(--ohana-space-5);
+
+  border-top: 1px solid var(--ohana-border);
+
+  text-align: center;
+}
+
+.ohana-factura-footer span {
+  display: block;
+
+  margin-bottom: var(--ohana-space-2);
+
+  font-size: 22px;
+}
+
+.ohana-factura-footer p {
+  margin: 0;
+
+  font-family: var(--ohana-font-title);
+  font-size: var(--ohana-h3-size);
+  font-weight: var(--ohana-title-weight);
+
+  color: var(--ohana-primary);
+}
+
+.ohana-factura-footer small {
+  display: block;
+
+  margin-top: var(--ohana-space-1);
+
+  font-size: var(--ohana-small-size);
+
+  color: var(--ohana-text-muted);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .ohana-nueva-factura {
+    padding: var(--ohana-space-4);
+  }
+
+  .ohana-factura-card {
+    padding: var(--ohana-space-5);
+  }
+
+  .ohana-factura-tabla-header {
+    display: none;
+  }
+
+  .ohana-factura-fila {
+    grid-template-columns: 1fr 1fr;
+
+    gap: var(--ohana-space-3);
+
+    padding: var(--ohana-space-4);
+  }
+
+  .ohana-factura-producto {
+    grid-column: 1 / -1;
+  }
+
+  .ohana-factura-fragancia {
+    grid-column: 1;
+  }
+
+  .ohana-factura-cantidad {
+    grid-column: 2;
+
+    text-align: right;
+  }
+
+  .ohana-factura-subtotal {
+    grid-column: 1 / -1;
+
+    text-align: left;
+  }
+}
+
+@media (max-width: 500px) {
+  .ohana-factura-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ohana-factura-header h1 {
+    font-size: 34px;
+  }
+
+  .ohana-factura-productos-titulo {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--ohana-space-2);
+  }
+
+  .ohana-factura-total {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ohana-factura-total strong {
+    font-size: 22px;
+  }
+
+  .ohana-factura-acciones {
+    flex-direction: column-reverse;
+  }
+
+  .ohana-btn-primary,
+  .ohana-btn-secondary {
+    width: 100%;
+  }
+}
