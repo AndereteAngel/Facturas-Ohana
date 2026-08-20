@@ -1,5 +1,6 @@
 import "../styles/nuevaFactura.css";
 
+import LogoOhana from "../components/LogoOhana";
 import { WHATSAPP_NUMBER } from "../config/contacto";
 import { useCarrito } from "../context/CarritoContext";
 import { useNavigate } from "react-router-dom";
@@ -58,7 +59,7 @@ function NuevaFactura() {
 
         {carrito.length === 0 ? (
           <div className="ohana-factura-vacia">
-            <span>🌸</span>
+            <LogoOhana className="ohana-factura-logo" />
 
             <h2>No hay productos seleccionados</h2>
 
@@ -152,7 +153,7 @@ function NuevaFactura() {
             </div>
 
             <footer className="ohana-factura-footer">
-              <span>🌸</span>
+              <LogoOhana className="ohana-footer-logo" />
 
               <p>Gracias por elegir OHANA</p>
 

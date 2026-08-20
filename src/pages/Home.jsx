@@ -1,6 +1,7 @@
 import "../styles/home.css";
 
 import CardProducto from "../components/CardProducto";
+import LogoOhana from "../components/LogoOhana";
 import ModalProducto from "../components/ModalProducto";
 import productos from "../data/productos";
 import { useCarrito } from "../context/CarritoContext";
@@ -70,7 +71,7 @@ function Home() {
 
           {carrito.length === 0 && (
             <div className="ohana-carrito-vacio">
-              <span>🌸</span>
+              <LogoOhana className="ohana-carrito-logo" />
 
               <h3>Tu carrito está vacío</h3>
 

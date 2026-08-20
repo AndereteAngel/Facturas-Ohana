@@ -144,3 +144,36 @@
   --ohana-divider:
     var(--ohana-border);
 }
+
+/* =========================================================
+   OHANA — LOGOS
+   ========================================================= */
+
+.ohana-logo {
+  display: block;
+  object-fit: contain;
+}
+
+.ohana-navbar-logo {
+  width: 42px;
+  height: 42px;
+}
+
+.ohana-carrito-logo {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 12px;
+}
+
+.ohana-factura-logo {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 12px;
+}
+
+.ohana-footer-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+}

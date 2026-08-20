@@ -24,15 +24,19 @@ function ModalProducto({ producto, visible, onCerrar }) {
 
   const tieneColores = producto.colores && producto.colores.length > 0;
 
-  const subtotal = producto.precio * cantidad;
+  const cantidadNumerica = Number(cantidad) || 0;
+
+  const subtotal = producto.precio * cantidadNumerica;
 
   const manejarAgregar = () => {
+    const cantidadFinal = Math.max(1, Number(cantidad) || 1);
+
     agregarProducto({
       ...producto,
       fragancia: tieneFragancias ? fragancia : "",
       color: tieneColores ? color : "",
-      cantidad,
-      subtotal,
+      cantidad: cantidadFinal,
+      subtotal: producto.precio * cantidadFinal,
     });
 
     onCerrar();
@@ -56,6 +60,7 @@ function ModalProducto({ producto, visible, onCerrar }) {
             />
 
             {/* FRAGANCIAS */}
+
             {tieneFragancias && (
               <>
                 <label className="form-label">Fragancia</label>
@@ -69,6 +74,7 @@ function ModalProducto({ producto, visible, onCerrar }) {
             )}
 
             {/* COLORES */}
+
             {tieneColores && (
               <>
                 <label className="form-label mt-3">Color</label>
@@ -88,6 +94,7 @@ function ModalProducto({ producto, visible, onCerrar }) {
             )}
 
             {/* CANTIDAD */}
+
             <label className="form-label mt-3">Cantidad</label>
 
             <input
@@ -96,13 +103,17 @@ function ModalProducto({ producto, visible, onCerrar }) {
               className="form-control"
               value={cantidad}
               onChange={(e) => {
-                const nuevaCantidad = Number(e.target.value);
-
-                setCantidad(nuevaCantidad < 1 ? 1 : nuevaCantidad);
+                setCantidad(e.target.value);
+              }}
+              onBlur={() => {
+                if (cantidad === "" || Number(cantidad) < 1) {
+                  setCantidad(1);
+                }
               }}
             />
 
             {/* PRECIOS */}
+
             <h5 className="mt-4">
               Precio: ${producto.precio.toLocaleString("es-AR")}
             </h5>

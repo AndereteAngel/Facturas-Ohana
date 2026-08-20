@@ -1,13 +1,14 @@
 import "./Navbar.css";
 
 import { Link } from "react-router-dom";
+import LogoOhana from "./LogoOhana";
 
 function Navbar() {
   return (
     <nav className="ohana-navbar">
       <div className="ohana-navbar-container">
         <Link className="ohana-navbar-brand" to="/">
-          <span className="ohana-navbar-icon">🌸</span>
+          <LogoOhana className="ohana-navbar-logo" />
 
           <span>OHANA</span>
         </Link>
