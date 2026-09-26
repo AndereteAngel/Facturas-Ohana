@@ -1,10 +1,12 @@
 import "./BuscadorFragancia.css";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function BuscadorFragancia({ fragancias, valor, onSeleccionar }) {
   const [busqueda, setBusqueda] = useState("");
   const [mostrarResultados, setMostrarResultados] = useState(false);
+
+  const contenedorRef = useRef(null);
 
   const resultados = fragancias.filter((fragancia) =>
     fragancia.toLowerCase().includes(busqueda.toLowerCase())
@@ -16,8 +18,26 @@ function BuscadorFragancia({ fragancias, valor, onSeleccionar }) {
     setMostrarResultados(false);
   };
 
+  // Cerrar la lista al hacer clic afuera
+  useEffect(() => {
+    const manejarClickAfuera = (event) => {
+      if (
+        contenedorRef.current &&
+        !contenedorRef.current.contains(event.target)
+      ) {
+        setMostrarResultados(false);
+      }
+    };
+
+    document.addEventListener("mousedown", manejarClickAfuera);
+
+    return () => {
+      document.removeEventListener("mousedown", manejarClickAfuera);
+    };
+  }, []);
+
   return (
-    <div className="buscador-fragancia">
+    <div className="buscador-fragancia" ref={contenedorRef}>
       <input
         type="text"
         className="form-control"
@@ -27,10 +47,12 @@ function BuscadorFragancia({ fragancias, valor, onSeleccionar }) {
           setBusqueda(e.target.value);
           setMostrarResultados(true);
         }}
-        onFocus={() => setMostrarResultados(true)}
+        onFocus={() => {
+          setMostrarResultados(true);
+        }}
       />
 
-      {mostrarResultados && busqueda && (
+      {mostrarResultados && (
         <div className="resultados-fragancias">
           {resultados.length > 0 ? (
             resultados.map((fragancia) => (
@@ -44,7 +66,9 @@ function BuscadorFragancia({ fragancias, valor, onSeleccionar }) {
               </button>
             ))
           ) : (
-            <div className="sin-resultados">No se encontraron fragancias</div>
+            <div className="sin-resultados">
+              No se encontraron fragancias
+            </div>
           )}
         </div>
       )}
@@ -59,3 +83,4 @@ function BuscadorFragancia({ fragancias, valor, onSeleccionar }) {
 }
 
 export default BuscadorFragancia;
+;

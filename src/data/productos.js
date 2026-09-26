@@ -5,6 +5,7 @@ import {
     fraganciasAuto,
     fraganciasCaritas,
     fraganciasDifusores,
+    fraganciasDisney,
     fraganciasMini,
     fraganciasSahumerios,
     fraganciasTarjetas,
@@ -18,11 +19,13 @@ import aerosol from "../assets/aerosol.jpg";
 import auto from "../assets/auto.jpg";
 import caritas from "../assets/caritas.jpg";
 import difusor from "../assets/difusor.jpg";
+import difusorDisney from "../assets/difusorDisney.jpg";
 import mini from "../assets/mini.jpg";
 import repuestoTouch from "../assets/repuestoTouch.jpg";
 import sahumerios from "../assets/sahumerios.jpg";
 import tarjetas from "../assets/tarjetas.jpg";
 import textil from "../assets/textiles.png";
+import textilDisney from "../assets/textilDisney.jpg";
 import touch from "../assets/touch.jpg";
 
 const productos = [
@@ -149,10 +152,10 @@ const productos = [
     {
         id: 10,
         codigo: "AUT001",
-        nombre: "Aromatizador para Auto",
+        nombre: "Ámbar Difusor Colgante para Autos",
         categoria: "Autos",
         descripcion:
-            "Aromatizante colgante para vehículos de larga duración.",
+            "Difusor colgante para autos de la línea Ámbar.",
         precio: 2300,
         stock: 10,
         imagen: auto,
@@ -186,6 +189,38 @@ const productos = [
         imagen: sahumerios,
         activo: true,
         fragancias: fraganciasSahumerios,
+    },
+
+    // =========================================================
+    // LÍNEA DISNEY
+    // =========================================================
+
+    {
+        id: 13,
+        codigo: "DIFDIS001",
+        nombre: "Difusor de Ambiente - Línea Disney",
+        categoria: "Difusores",
+        descripcion:
+            "Difusor aromático con varillas de 125 ml. Línea Disney, Pixar, Marvel y Star Wars.",
+        precio: 7000,
+        stock: 10,
+        imagen: difusorDisney,
+        activo: true,
+        fragancias: fraganciasDisney,
+    },
+
+    {
+        id: 14,
+        codigo: "TXTDIS001",
+        nombre: "Aromatizador Textil - Línea Disney",
+        categoria: "Textiles",
+        descripcion:
+            "Aromatizador textil en spray de 250 ml. Perfuma telas, ropa, cortinas, sillones y ambientes.",
+        precio: 5000,
+        stock: 10,
+        imagen: textilDisney,
+        activo: true,
+        fragancias: fraganciasDisney,
     },
 ];
 
