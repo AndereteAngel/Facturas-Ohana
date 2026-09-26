@@ -1,3 +1,4 @@
+
 /* =====================================================
    OHANA — HOME
    ===================================================== */
@@ -9,7 +10,6 @@
   background: var(--ohana-background);
 }
 
-
 /* =====================================================
    LAYOUT PRINCIPAL
    ===================================================== */
@@ -18,14 +18,11 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
-
   gap: var(--ohana-space-8);
   align-items: start;
 }
-
 
 /* =====================================================
    PRODUCTOS
@@ -33,14 +30,677 @@
 
 .ohana-productos {
   display: grid;
-
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   gap: var(--ohana-space-6);
-
   align-items: stretch;
 }
 
+.ohana-productos-contenedor {
+  min-width: 0;
+}
+
+/* =====================================================
+   ENCONTRÁ TU AROMA
+   ===================================================== */
+
+.ohana-estilos-card {
+  position: relative;
+  margin-bottom: var(--ohana-space-6);
+  padding: var(--ohana-space-6);
+  background: var(--ohana-surface);
+  border: 1px solid var(--ohana-border);
+  border-radius: var(--ohana-radius-lg);
+  box-shadow: var(--ohana-shadow);
+  overflow: hidden;
+}
+
+.ohana-estilos-card::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--ohana-primary-light);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* =====================================================
+   CABECERA
+   ===================================================== */
+
+.ohana-estilos-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ohana-space-4);
+  margin-bottom: var(--ohana-space-6);
+}
+
+.ohana-estilos-icono {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ohana-primary-light);
+  border: 1px solid var(--ohana-primary);
+  border-radius: 18px;
+  font-size: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.ohana-estilos-label {
+  margin: 0 0 5px;
+  color: var(--ohana-primary);
+  font-family: var(--ohana-font);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.ohana-estilos-header h1 {
+  margin: 0;
+  color: var(--ohana-text);
+  font-family: var(--ohana-font-title);
+  font-size: 29px;
+  font-weight: var(--ohana-title-weight);
+  letter-spacing: 0.2px;
+}
+
+.ohana-estilos-descripcion {
+  margin: 7px 0 0;
+  color: var(--ohana-text-muted);
+  font-family: var(--ohana-font);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* =====================================================
+   ETAPA VISUAL
+   ===================================================== */
+
+.ohana-estilos-header::after {
+  content: "1 · ELEGÍ TU ESTILO";
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 6px 10px;
+  border: 1px solid var(--ohana-border);
+  border-radius: var(--ohana-radius-pill);
+  background: var(--ohana-background);
+  color: var(--ohana-text-muted);
+  font-family: var(--ohana-font);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+/* =====================================================
+   ESTILOS — CARDS
+   ===================================================== */
+
+.ohana-estilos-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ohana-estilo-card {
+  position: relative;
+  min-width: 0;
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--ohana-border);
+  border-radius: 18px;
+  background: var(--ohana-background);
+  color: var(--ohana-text);
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.ohana-estilo-card::after {
+  content: "→";
+  position: absolute;
+  right: 13px;
+  bottom: 10px;
+  color: var(--ohana-text-muted);
+  font-family: var(--ohana-font);
+  font-size: 15px;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: all 0.22s ease;
+}
+
+.ohana-estilo-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--ohana-primary);
+  box-shadow: var(--ohana-shadow-sm);
+}
+
+.ohana-estilo-card:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--ohana-primary);
+}
+
+.ohana-estilo-card.activo {
+  border-color: var(--ohana-primary);
+  background: var(--ohana-primary-light);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.10),
+    0 0 0 1px var(--ohana-primary);
+  transform: translateY(-2px);
+}
+
+.ohana-estilo-card.activo::after {
+  content: "✓";
+  opacity: 1;
+  transform: none;
+  color: var(--ohana-primary);
+  font-weight: 800;
+}
+
+.ohana-estilo-icono {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: var(--ohana-surface);
+  border: 1px solid var(--ohana-border);
+  font-size: 24px;
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.ohana-estilo-card:hover .ohana-estilo-icono {
+  transform: scale(1.06) rotate(-2deg);
+  border-color: var(--ohana-primary);
+}
+
+.ohana-estilo-card.activo .ohana-estilo-icono {
+  border-color: var(--ohana-primary);
+  transform: scale(1.05);
+}
+
+.ohana-estilo-contenido {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 20px;
+}
+
+.ohana-estilo-contenido strong {
+  color: var(--ohana-text);
+  font-family: var(--ohana-font);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.ohana-estilo-contenido small {
+  color: var(--ohana-text-muted);
+  font-family: var(--ohana-font);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* =====================================================
+   PANEL DE FRAGANCIAS
+   ===================================================== */
+
+.ohana-fragancias-panel {
+  position: relative;
+  margin-top: var(--ohana-space-5);
+  padding: var(--ohana-space-5);
+  background: var(--ohana-background);
+  border: 1px solid var(--ohana-primary);
+  border-radius: 18px;
+  animation: ohana-aparecer 0.28s ease;
+  box-shadow: inset 0 0 0 1px var(--ohana-primary-light);
+}
+
+@keyframes ohana-aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   CABECERA FRAGANCIAS
+   ===================================================== */
+
+.ohana-fragancias-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: var(--ohana-space-4);
+}
+
+.ohana-fragancias-label {
+  margin: 0 0 4px;
+  color: var(--ohana-primary);
+  font-family: var(--ohana-font);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.ohana-fragancias-header h2 {
+  margin: 0;
+  color: var(--ohana-text);
+  font-family: var(--ohana-font-title);
+  font-size: 22px;
+  font-weight: var(--ohana-title-weight);
+}
+
+.ohana-fragancias-header p {
+  margin: 5px 0 0;
+  color: var(--ohana-text-muted);
+  font-family: var(--ohana-font);
+  font-size: 12px;
+}
+
+.ohana-fragancia-quitar {
+  flex-shrink: 0;
+  padding: 7px 12px;
+  border: 1px solid var(--ohana-border);
+  border-radius: var(--ohana-radius-pill);
+  background: var(--ohana-surface);
+  color: var(--ohana-primary);
+  font-family: var(--ohana-font);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ohana-fragancia-quitar:hover {
+  border-color: var(--ohana-primary);
+  background: var(--ohana-primary-light);
+  transform: translateY(-1px);
+}
+
+/* =====================================================
+   BUSCADOR DE FRAGANCIAS
+   ===================================================== */
+
+.ohana-fragancias-buscador {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--ohana-space-4);
+}
+
+.ohana-fragancias-buscador > span {
+  position: absolute;
+  left: 14px;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.ohana-fragancias-buscador input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 42px 12px 40px;
+  border: 1px solid var(--ohana-border);
+  border-radius: var(--ohana-radius-pill);
+  background: var(--ohana-surface);
+  color: var(--ohana-text);
+  font-family: var(--ohana-font);
+  font-size: 13px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.ohana-fragancias-buscador input::placeholder {
+  color: var(--ohana-text-muted);
+}
+
+.ohana-fragancias-buscador input:focus {
+  border-color: var(--ohana-primary);
+  box-shadow: 0 0 0 3px var(--ohana-primary-light);
+}
+
+.ohana-fragancias-buscador button {
+  position: absolute;
+  right: 8px;
+  width: 27px;
+  height: 27px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ohana-text-muted);
+  font-size: 19px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ohana-fragancias-buscador button:hover {
+  background: var(--ohana-primary-light);
+  color: var(--ohana-primary);
+}
+
+/* =====================================================
+   LISTA DE FRAGANCIAS
+   ===================================================== */
+
+.ohana-fragancias-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 190px;
+  overflow-y: auto;
+  padding: 2px 4px 4px 2px;
+}
+
+.ohana-fragancias-lista::-webkit-scrollbar {
+  width: 5px;
+}
+
+.ohana-fragancias-lista::-webkit-scrollbar-thumb {
+  background: var(--ohana-border);
+  border-radius: 10px;
+}
+
+.ohana-fragancia-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 13px;
+  border: 1px solid var(--ohana-border);
+  border-radius: var(--ohana-radius-pill);
+  background: var(--ohana-surface);
+  color: var(--ohana-text);
+  font-family: var(--ohana-font);
+  font-size: 12px;
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.ohana-fragancia-btn span {
+  font-size: 12px;
+}
+
+.ohana-fragancia-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--ohana-primary);
+  background: var(--ohana-primary-light);
+  color: var(--ohana-primary);
+}
+
+/* =====================================================
+   FRAGANCIA ACTIVA
+   ===================================================== */
+
+.ohana-fragancia-activa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--ohana-surface);
+  border: 1px solid var(--ohana-primary);
+  border-radius: 15px;
+  box-shadow: var(--ohana-shadow-sm);
+  animation: ohana-seleccion 0.22s ease;
+}
+
+@keyframes ohana-seleccion {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ohana-fragancia-activa > span {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--ohana-primary-light);
+  font-size: 19px;
+}
+
+.ohana-fragancia-activa div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ohana-fragancia-activa small {
+  color: var(--ohana-text-muted);
+  font-family: var(--ohana-font);
+  font-size: 10px;
+}
+
+.ohana-fragancia-activa strong {
+  color: var(--ohana-text);
+  font-family: var(--ohana-font);
+  font-size: 14px;
+}
+
+.ohana-fragancia-activa button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ohana-text-muted);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ohana-fragancia-activa button:hover {
+  background: var(--ohana-primary-light);
+  color: var(--ohana-primary);
+}
+
+/* =====================================================
+   SIN FRAGANCIAS
+   ===================================================== */
+
+.ohana-fragancias-vacio {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  color: var(--ohana-text-muted);
+}
+
+.ohana-fragancias-vacio span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 22px;
+}
+
+.ohana-fragancias-vacio p {
+  margin: 0;
+  font-family: var(--ohana-font);
+  font-size: 12px;
+}
+
+/* =====================================================
+   FILTRO DE AMBIENTE
+   ===================================================== */
+
+.ohana-filtros-secundarios {
+  margin-bottom: var(--ohana-space-5);
+  padding: var(--ohana-space-5);
+  background: var(--ohana-surface);
+  border: 1px solid var(--ohana-border);
+  border-radius: var(--ohana-radius);
+}
+
+.ohana-ambientes {
+  margin: 0;
+}
+
+.ohana-ambientes-titulo {
+  margin: 0 0 10px;
+  color: var(--ohana-text);
+  font-family: var(--ohana-font);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ohana-ambientes-opciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ohana-ambiente-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  border: 1px solid var(--ohana-border);
+  border-radius: var(--ohana-radius-pill);
+  background: var(--ohana-background);
+  color: var(--ohana-text-muted);
+  font-family: var(--ohana-font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ohana-ambiente-btn:hover {
+  border-color: var(--ohana-primary);
+  color: var(--ohana-primary);
+  transform: translateY(-1px);
+}
+
+.ohana-ambiente-btn.activo {
+  border-color: var(--ohana-primary);
+  background: var(--ohana-primary);
+  color: #ffffff;
+  box-shadow: var(--ohana-shadow-sm);
+}
+
+/* =====================================================
+   INFORMACIÓN DE RESULTADOS
+   ===================================================== */
+
+.ohana-resultados-info {
+  min-height: 34px;
+  margin-bottom: var(--ohana-space-4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ohana-text-muted);
+  font-family: var(--ohana-font);
+  font-size: 12px;
+}
+
+.ohana-resultados-info p {
+  margin: 0;
+  flex: 1;
+}
+
+.ohana-resultados-info strong {
+  color: var(--ohana-text);
+}
+
+.ohana-resultados-info small {
+  color: var(--ohana-text-muted);
+  white-space: nowrap;
+}
+
+/* =====================================================
+   SIN RESULTADOS
+   ===================================================== */
+
+.ohana-sin-resultados {
+  grid-column: 1 / -1;
+  padding: 50px 20px;
+  text-align: center;
+  background: var(--ohana-surface);
+  border: 1px solid var(--ohana-border);
+  border-radius: var(--ohana-radius-lg);
+}
+
+.ohana-sin-resultados-icon {
+  margin-bottom: 12px;
+  font-size: 38px;
+}
+
+.ohana-sin-resultados h2 {
+  margin: 0 0 6px;
+  color: var(--ohana-text);
+  font-family: var(--ohana-font-title);
+  font-size: 22px;
+}
+
+.ohana-sin-resultados p {
+  margin: 0 0 18px;
+  color: var(--ohana-text-muted);
+  font-family: var(--ohana-font);
+  font-size: 13px;
+}
+
+.ohana-sin-resultados button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--ohana-radius-pill);
+  background: var(--ohana-primary);
+  color: #ffffff;
+  font-family: var(--ohana-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ohana-sin-resultados button:hover {
+  background: var(--ohana-primary-dark);
+  transform: translateY(-1px);
+}
 
 /* =====================================================
    CARRITO
@@ -49,21 +709,14 @@
 .ohana-carrito {
   width: 100%;
   box-sizing: border-box;
-
   background: var(--ohana-surface);
-
   border: 1px solid var(--ohana-border);
-
   border-radius: var(--ohana-radius-lg);
-
   box-shadow: var(--ohana-shadow);
-
   padding: var(--ohana-space-6);
-
   position: sticky;
   top: 20px;
 }
-
 
 /* =====================================================
    CABECERA DEL CARRITO
@@ -71,56 +724,37 @@
 
 .ohana-carrito-header {
   display: flex;
-
   align-items: center;
-
   gap: var(--ohana-space-4);
-
   text-align: left;
 }
-
 
 .ohana-carrito-icon {
   width: 48px;
   height: 48px;
-
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: var(--ohana-primary-light);
-
   border-radius: 50%;
-
   font-size: 23px;
 }
 
-
 .ohana-carrito-header h2 {
   margin: 0;
-
   color: var(--ohana-text);
-
   font-family: var(--ohana-font-title);
-
   font-size: var(--ohana-h2-size);
-
   font-weight: var(--ohana-title-weight);
 }
 
-
 .ohana-carrito-header p {
   margin: 3px 0 0;
-
   color: var(--ohana-text-muted);
-
   font-family: var(--ohana-font);
-
   font-size: var(--ohana-small-size);
 }
-
 
 /* =====================================================
    SEPARADOR
@@ -128,12 +762,9 @@
 
 .ohana-carrito-linea {
   height: 1px;
-
   background: var(--ohana-border);
-
   margin: var(--ohana-space-5) 0;
 }
-
 
 /* =====================================================
    CARRITO VACÍO
@@ -141,41 +772,28 @@
 
 .ohana-carrito-vacio {
   padding: 30px 10px;
-
   text-align: center;
 }
 
-
 .ohana-carrito-vacio span {
   display: block;
-
   margin-bottom: 12px;
-
   font-size: 32px;
 }
 
-
 .ohana-carrito-vacio h3 {
   margin: 0 0 6px;
-
   color: var(--ohana-text);
-
   font-family: var(--ohana-font-title);
-
   font-size: 20px;
 }
 
-
 .ohana-carrito-vacio p {
   margin: 0;
-
   color: var(--ohana-text-muted);
-
   font-family: var(--ohana-font);
-
   font-size: var(--ohana-small-size);
 }
-
 
 /* =====================================================
    ITEMS DEL CARRITO
@@ -183,29 +801,19 @@
 
 .ohana-carrito-items {
   display: flex;
-
   flex-direction: column;
-
   gap: var(--ohana-space-4);
 }
 
-
 .ohana-carrito-item {
   padding: var(--ohana-space-4);
-
   background: var(--ohana-background);
-
   border: 1px solid var(--ohana-border);
-
   border-radius: var(--ohana-radius);
-
   display: flex;
-
   flex-direction: column;
-
   gap: var(--ohana-space-3);
 }
-
 
 /* =====================================================
    INFORMACIÓN DEL PRODUCTO
@@ -213,47 +821,31 @@
 
 .ohana-item-info h3 {
   margin: 0 0 4px;
-
   color: var(--ohana-text);
-
   font-family: var(--ohana-font);
-
   font-size: 16px;
-
   font-weight: 600;
 }
-
 
 .ohana-item-fragancia {
   margin: 0 0 5px;
-
   color: var(--ohana-primary);
-
   font-family: var(--ohana-font);
-
   font-size: 13px;
-
   font-weight: 600;
 }
 
-
 .ohana-item-precio {
   margin: 0;
-
   color: var(--ohana-text);
-
   font-family: var(--ohana-font);
-
   font-size: 13px;
 }
 
-
 .ohana-item-precio span {
   color: var(--ohana-text-muted);
-
   font-size: 12px;
 }
-
 
 /* =====================================================
    CONTROLES DE CANTIDAD
@@ -261,75 +853,47 @@
 
 .ohana-item-controles {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 }
 
-
 .ohana-cantidad {
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   border: 1px solid var(--ohana-border);
-
   border-radius: var(--ohana-radius-pill);
-
   background: var(--ohana-surface);
-
   overflow: hidden;
 }
-
 
 .ohana-cantidad-btn {
   width: 32px;
   height: 30px;
-
   border: none;
-
   background: transparent;
-
   color: var(--ohana-primary);
-
   font-size: 18px;
-
   font-weight: 600;
-
   cursor: pointer;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   transition: background 0.2s ease;
 }
-
 
 .ohana-cantidad-btn:hover {
   background: var(--ohana-primary-light);
 }
 
-
 .ohana-cantidad span {
   min-width: 30px;
-
   text-align: center;
-
   color: var(--ohana-text);
-
   font-family: var(--ohana-font);
-
   font-size: 14px;
-
   font-weight: 600;
 }
-
 
 /* =====================================================
    ELIMINAR
@@ -338,33 +902,21 @@
 .ohana-eliminar {
   width: 32px;
   height: 32px;
-
   border: 1px solid var(--ohana-border);
-
   border-radius: 50%;
-
   background: var(--ohana-surface);
-
   color: var(--ohana-danger);
-
   cursor: pointer;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   transition: all 0.2s ease;
 }
 
-
 .ohana-eliminar:hover {
   background: #fbe8eb;
-
   border-color: var(--ohana-danger);
 }
-
 
 /* =====================================================
    SUBTOTAL
@@ -372,36 +924,24 @@
 
 .ohana-item-subtotal {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   padding-top: 8px;
-
   border-top: 1px solid var(--ohana-border);
 }
 
-
 .ohana-item-subtotal span {
   color: var(--ohana-text-muted);
-
   font-family: var(--ohana-font);
-
   font-size: 12px;
 }
 
-
 .ohana-item-subtotal strong {
   color: var(--ohana-primary);
-
   font-family: var(--ohana-font);
-
   font-size: 16px;
-
   font-weight: var(--ohana-price-weight);
 }
-
 
 /* =====================================================
    TOTAL
@@ -409,40 +949,26 @@
 
 .ohana-carrito-total {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   margin-top: var(--ohana-space-5);
-
   padding-top: var(--ohana-space-5);
-
   border-top: 2px solid var(--ohana-border);
 }
 
-
 .ohana-carrito-total span {
   color: var(--ohana-text);
-
   font-family: var(--ohana-font);
-
   font-size: 16px;
-
   font-weight: 600;
 }
 
-
 .ohana-carrito-total strong {
   color: var(--ohana-primary);
-
   font-family: var(--ohana-font);
-
   font-size: var(--ohana-price-size);
-
   font-weight: var(--ohana-price-weight);
 }
-
 
 /* =====================================================
    FINALIZAR VENTA
@@ -450,59 +976,38 @@
 
 .ohana-btn-finalizar {
   width: 100%;
-
   margin-top: var(--ohana-space-5);
-
   padding: 13px 20px;
-
   border: none;
-
   border-radius: var(--ohana-radius-pill);
-
   background: var(--ohana-primary);
-
   color: #ffffff;
-
   font-family: var(--ohana-font);
-
   font-size: 14px;
-
   font-weight: 600;
-
   letter-spacing: 0.3px;
-
   cursor: pointer;
-
   transition: all 0.2s ease;
 }
 
-
 .ohana-btn-finalizar:hover:not(:disabled) {
   background: var(--ohana-primary-dark);
-
   transform: translateY(-1px);
-
   box-shadow: var(--ohana-shadow-sm);
 }
 
-
 .ohana-btn-finalizar:disabled {
   background: var(--ohana-primary-light);
-
   color: var(--ohana-text-muted);
-
   cursor: not-allowed;
-
   opacity: 0.8;
 }
 
-
 /* =====================================================
-   RESPONSIVE
+   RESPONSIVE — TABLET
    ===================================================== */
 
 @media (max-width: 1000px) {
-
   .ohana-layout {
     grid-template-columns: 1fr;
   }
@@ -510,12 +1015,13 @@
   .ohana-carrito {
     position: static;
   }
-
 }
 
+/* =====================================================
+   RESPONSIVE — MOBILE
+   ===================================================== */
 
 @media (max-width: 650px) {
-
   .ohana-home {
     padding: var(--ohana-space-4);
   }
@@ -528,4 +1034,94 @@
     padding: var(--ohana-space-5);
   }
 
+  .ohana-estilos-card {
+    padding: var(--ohana-space-5);
+  }
+
+  .ohana-estilos-header {
+    gap: var(--ohana-space-3);
+  }
+
+  .ohana-estilos-icono {
+    width: 44px;
+    height: 44px;
+    border-radius: 15px;
+    font-size: 20px;
+  }
+
+  .ohana-estilos-header h1 {
+    font-size: 23px;
+  }
+
+  .ohana-estilos-header::after {
+    position: static;
+    display: inline-flex;
+    margin-left: auto;
+    margin-top: 2px;
+    white-space: nowrap;
+  }
+
+  .ohana-estilos-descripcion {
+    font-size: 12px;
+  }
+
+  .ohana-estilos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ohana-estilo-card {
+    min-height: 82px;
+    padding: 14px;
+  }
+
+  .ohana-estilo-icono {
+    width: 42px;
+    height: 42px;
+    font-size: 21px;
+  }
+
+  .ohana-estilo-contenido strong {
+    font-size: 14px;
+  }
+
+  .ohana-fragancias-panel {
+    padding: var(--ohana-space-4);
+  }
+
+  .ohana-fragancias-header {
+    flex-direction: column;
+  }
+
+  .ohana-fragancia-quitar {
+    align-self: flex-start;
+  }
+
+  .ohana-fragancias-lista {
+    max-height: 240px;
+  }
+
+  .ohana-fragancia-btn {
+    flex: 1 1 calc(50% - 8px);
+    justify-content: center;
+  }
+
+  .ohana-filtros-secundarios {
+    padding: var(--ohana-space-4);
+  }
+
+  .ohana-ambiente-btn {
+    flex: 1 1 calc(50% - 8px);
+    justify-content: center;
+  }
+
+  .ohana-resultados-info {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .ohana-resultados-info small {
+    width: 100%;
+    margin-left: 24px;
+  }
 }
+

@@ -1,15 +1,20 @@
+
 /* =========================================
    OHANA — CARD PRODUCTO
    ========================================= */
 
 .card-producto {
+  position: relative;
+
   width: 100%;
+
   display: flex;
   flex-direction: column;
 
   background: var(--ohana-surface);
 
   border: 1px solid var(--ohana-border);
+
   border-radius: var(--ohana-radius);
 
   overflow: hidden;
@@ -19,18 +24,64 @@
   text-align: center;
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.35s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+
+  animation: cardEntrada 0.5s ease both;
 }
 
 
 /* =========================================
-   HOVER
+   ENTRADA
+   ========================================= */
+
+@keyframes cardEntrada {
+
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================
+   HOVER CARD
    ========================================= */
 
 .card-producto:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--ohana-shadow);
+
+  transform: translateY(-8px);
+
+  box-shadow:
+    var(--ohana-shadow),
+    0 10px 30px rgba(0, 0, 0, 0.08);
+
+  border-color: var(--ohana-primary);
+
+}
+
+
+/* =========================================
+   CONTENEDOR IMAGEN
+   ========================================= */
+
+.producto-imagen-contenedor {
+
+  position: relative;
+
+  width: 100%;
+  height: 220px;
+
+  overflow: hidden;
+
+  background: var(--ohana-background);
 }
 
 
@@ -39,8 +90,9 @@
    ========================================= */
 
 .producto-imagen {
+
   width: 100%;
-  height: 220px;
+  height: 100%;
 
   display: block;
 
@@ -50,7 +102,96 @@
 
   box-sizing: border-box;
 
-  background: var(--ohana-background);
+  transition:
+    transform 0.5s cubic-bezier(.2,.8,.2,1),
+    filter 0.4s ease;
+}
+
+
+/* =========================================
+   ZOOM IMAGEN
+   ========================================= */
+
+.card-producto:hover .producto-imagen {
+
+  transform: scale(1.06);
+
+}
+
+
+/* =========================================
+   CATEGORÍA
+   ========================================= */
+
+.producto-categoria {
+
+  position: absolute;
+
+  top: 12px;
+  left: 12px;
+
+  z-index: 3;
+
+  padding: 5px 10px;
+
+  border-radius: var(--ohana-radius-pill);
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: var(--ohana-text);
+
+  font-family: var(--ohana-font);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
+
+  text-transform: uppercase;
+
+  box-shadow: var(--ohana-shadow-sm);
+
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+
+}
+
+
+/* =========================================
+   BRILLO
+   ========================================= */
+
+.producto-brillo {
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  pointer-events: none;
+
+  transition: left 0.65s ease;
+
+}
+
+
+.card-producto:hover .producto-brillo {
+
+  left: 140%;
+
 }
 
 
@@ -59,13 +200,17 @@
    ========================================= */
 
 .producto-info {
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
 
   flex: 1;
 
   padding: var(--ohana-space-6) var(--ohana-space-5);
+
 }
 
 
@@ -74,6 +219,7 @@
    ========================================= */
 
 .producto-info h3 {
+
   margin: 0 0 var(--ohana-space-2);
 
   color: var(--ohana-text);
@@ -87,6 +233,20 @@
   line-height: 1.25;
 
   letter-spacing: 0.2px;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+
+}
+
+
+.card-producto:hover .producto-info h3 {
+
+  color: var(--ohana-primary);
+
+  transform: translateY(-1px);
+
 }
 
 
@@ -94,7 +254,8 @@
    DESCRIPCIÓN
    ========================================= */
 
-.producto-info p:not(.precio):not(.stock) {
+.producto-descripcion {
+
   max-width: 300px;
 
   margin: 0;
@@ -108,6 +269,24 @@
   font-weight: var(--ohana-text-weight);
 
   line-height: 1.5;
+
+}
+
+
+/* =========================================
+   DATOS
+   ========================================= */
+
+.producto-datos {
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
 }
 
 
@@ -116,6 +295,7 @@
    ========================================= */
 
 .producto-info .precio {
+
   margin: var(--ohana-space-4) 0 var(--ohana-space-1);
 
   color: var(--ohana-primary);
@@ -127,6 +307,17 @@
   font-weight: var(--ohana-price-weight);
 
   line-height: 1.2;
+
+  transition:
+    transform 0.25s ease;
+
+}
+
+
+.card-producto:hover .producto-info .precio {
+
+  transform: scale(1.03);
+
 }
 
 
@@ -135,6 +326,13 @@
    ========================================= */
 
 .producto-info .stock {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
   margin: 0;
 
   color: var(--ohana-text-muted);
@@ -144,15 +342,46 @@
   font-size: var(--ohana-small-size);
 
   font-weight: var(--ohana-text-weight);
+
 }
 
 
 /* =========================================
-   BOTÓN OHANA
+   INDICADOR STOCK
+   ========================================= */
+
+.stock-indicador {
+
+  width: 7px;
+  height: 7px;
+
+  display: inline-block;
+
+  border-radius: 50%;
+
+  background: var(--ohana-primary);
+
+  box-shadow:
+    0 0 0 3px rgba(0, 0, 0, 0.04);
+
+}
+
+
+/* =========================================
+   BOTÓN
    ========================================= */
 
 .producto-info button {
+
   width: 90%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
 
   margin-top: var(--ohana-space-6);
 
@@ -174,10 +403,14 @@
 
   cursor: pointer;
 
+  overflow: hidden;
+
   transition:
-    background 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    gap 0.25s ease;
+
 }
 
 
@@ -186,11 +419,36 @@
    ========================================= */
 
 .producto-info button:hover {
+
   background: var(--ohana-primary-dark);
 
   transform: translateY(-2px);
 
-  box-shadow: var(--ohana-shadow-sm);
+  box-shadow: var(--ohana-shadow);
+
+  gap: 14px;
+
+}
+
+
+/* =========================================
+   FLECHA
+   ========================================= */
+
+.boton-flecha {
+
+  display: inline-block;
+
+  transition:
+    transform 0.25s ease;
+
+}
+
+
+.producto-info button:hover .boton-flecha {
+
+  transform: translateX(3px);
+
 }
 
 
@@ -199,7 +457,24 @@
    ========================================= */
 
 .producto-info button:active {
+
   transform: translateY(0);
+
+  box-shadow: none;
+
+}
+
+
+/* =========================================
+   FOCUS
+   ========================================= */
+
+.producto-info button:focus-visible {
+
+  outline: 2px solid var(--ohana-primary);
+
+  outline-offset: 3px;
+
 }
 
 
@@ -209,15 +484,57 @@
 
 @media (max-width: 768px) {
 
-  .producto-imagen {
+  .producto-imagen-contenedor {
+
     height: 210px;
+
   }
 
   .producto-info {
+
     padding: var(--ohana-space-5);
+
   }
 
   .producto-info button {
+
     width: 95%;
+
   }
+
+  .card-producto:hover {
+
+    transform: translateY(-4px);
+
+  }
+
 }
+
+
+/* =========================================
+   REDUCIR ANIMACIONES
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .card-producto {
+
+    animation: none;
+
+    transition: none;
+
+  }
+
+  .producto-imagen,
+  .producto-brillo,
+  .producto-info h3,
+  .producto-info .precio,
+  .producto-info button,
+  .boton-flecha {
+
+    transition: none;
+
+  }
+
+}
+

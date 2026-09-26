@@ -1,3 +1,4 @@
+
 export const fraganciasTextiles = [
     // Florales
     "Antitabaco",
@@ -340,9 +341,12 @@ export const fraganciasTarjetas = [
 ];
 
 export const fraganciasAuto = [
-    "Ámbar",
-    "Ámbar Estilo",
-    "Ámbar Sport",
+    "Atlantis",
+    "Glitter Bot",
+    "Gardenias y Flores Blancas",
+    "Sport",
+    "Estallido Frutal",
+    "Limón Dulce",
 ];
 
 export const fraganciasCaritas = [
@@ -472,3 +476,167 @@ export const fraganciasDisney = [
     "R2D2",
     "Darth Vader",
 ];
+
+/* =========================
+   ESTILOS DE FRAGANCIAS
+========================= */
+
+export const estilosFragancias = {
+    citricos: {
+        nombre: "Cítricos",
+        descripcion: "Frescos, vibrantes y energizantes.",
+        icono: "🍋",
+        fragancias: [
+            "Citrus",
+            "Limón",
+            "Lima Limón",
+            "Linah",
+            "Pomelo Rosado",
+            "Verbena",
+            "Orange",
+            "Mandarina",
+            "Bergamota",
+            "Bergamota y Naranja",
+            "Bergamota & Cedro",
+            "Fresias y Bergamota",
+            "Fresias Bergamota",
+            "Miel y Limón",
+            "Naranja",
+            "Naranja Pimienta",
+            "Mix Cítrico",
+        ],
+    },
+
+    florales: {
+        nombre: "Florales",
+        descripcion: "Delicados, elegantes y envolventes.",
+        icono: "🌸",
+        fragancias: [
+            "Bamboo",
+            "Flores Blancas",
+            "Flores Silvestres",
+            "Jazmín",
+            "Lavanda",
+            "Lilas",
+            "Magnolia y Fresias",
+            "Peonías y Cedro",
+            "Pétalos de Orquídeas",
+            "Rocío",
+            "Rosas",
+            "Violetas",
+            "Palo Santo",
+        ],
+    },
+
+    frutales: {
+        nombre: "Frutales",
+        descripcion: "Dulces, alegres y llenos de vida.",
+        icono: "🍓",
+        fragancias: [
+            "Apple",
+            "Bubblegum",
+            "Cereza Malbec",
+            "Coco",
+            "Coco Vai",
+            "Damasco",
+            "Frutilla",
+            "Frutos Patagónicos",
+            "Frutos Rojos",
+            "Guaraná Hawai",
+            "Hawai",
+            "Mango",
+            "Maracuyá",
+            "Melocotón Blanco",
+            "Melón",
+            "Papaya",
+            "Pera y Durazno",
+            "Pitanga",
+            "Sandía Pepino",
+            "Tropical",
+            "Uva",
+            "Multifruta",
+            "Frutos Tropicales",
+            "Estallido Frutal",
+        ],
+    },
+
+    frescos: {
+        nombre: "Frescos",
+        descripcion: "Limpios, livianos y refrescantes.",
+        icono: "🌿",
+        fragancias: [
+            "Marino",
+            "Agua Marina",
+            "Aqua",
+            "Breeze",
+            "Clean Cotton",
+            "Green",
+            "Citrus",
+            "Verbena",
+            "Linah",
+            "Lima y Menta",
+            "Menta",
+            "Eucaliptus",
+        ],
+    },
+
+    dulces: {
+        nombre: "Dulces",
+        descripcion: "Cálidos, suaves y tentadores.",
+        icono: "🍦",
+        fragancias: [
+            "Vainilla",
+            "Lavanda Vainilla",
+            "Vainilla Violetas",
+            "Limón Dulce y Vainilla",
+            "Café au Chocolat",
+            "Cappuccino",
+            "Cookies & Cream",
+            "Manzana Canela",
+            "Naranja y Chocolate",
+            "Vainilla Tonka",
+            "Tonka",
+            "Coco",
+            "Bubblegum",
+            "Miel y Limón",
+        ],
+    },
+
+    amaderados: {
+        nombre: "Amaderados",
+        descripcion: "Profundos, elegantes y sofisticados.",
+        icono: "🪵",
+        fragancias: [
+            "Cedro",
+            "Sándalo",
+            "Sándalo y Violetas",
+            "Teakwood",
+            "Patchouly",
+            "Musk",
+            "Amber",
+            "Oriente",
+            "New Delhi",
+            "Vrindavan",
+            "Palo Santo",
+        ],
+    },
+
+    misticos: {
+        nombre: "Místicos",
+        descripcion: "Intensos, profundos y espirituales.",
+        icono: "✨",
+        fragancias: [
+            "Dragon's Blood",
+            "Frankincense",
+            "Incienso",
+            "Mirra",
+            "Nag Champa",
+            "Palo Santo",
+            "Ruda y Romero",
+            "White Sage",
+            "Vrindavan",
+            "Amber",
+            "Cinnamon",
+        ],
+    },
+};
